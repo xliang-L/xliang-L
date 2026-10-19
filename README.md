@@ -17,7 +17,27 @@
 
 ---
 
-### `01` &nbsp; whoami
+### `01` &nbsp; github telemetry
+
+<p align="center">
+  <a href="https://github.com/xliang-L?tab=overview">
+    <img src="./assets/github-stats.svg" alt="xliang's public GitHub statistics" height="165" />
+  </a>
+  <a href="https://github.com/xliang-L?tab=repositories">
+    <img src="./assets/top-languages.svg" alt="Language distribution across xliang's public repositories" height="165" />
+  </a>
+</p>
+
+<p align="center">
+  <img src="./assets/github-snake.svg" alt="A neon snake eating xliang's GitHub contribution graph from the past year" width="100%" />
+</p>
+
+<p align="center">
+  <sub>公开 GitHub 活动 · 每日自动更新 · <a href="https://github.com/xliang-L/xliang-L/actions/workflows/profile.yml">查看更新状态</a></sub><br />
+  <sub>Snake by <a href="https://github.com/Platane/snk">snk</a> · Cards by <a href="https://github.com/stats-organization/github-readme-stats-action">GitHub Readme Stats</a></sub>
+</p>
+
+### `02` &nbsp; whoami
 
 你好，我是 **xliang**。在 **AI、自动化和产品**之间折腾，喜欢把「这能不能做」变成「打开就能用」。
 
@@ -33,7 +53,7 @@ const xliang = {
 };
 ```
 
-### `02` &nbsp; things I build
+### `03` &nbsp; things I build
 
 | 项目 / Project | 在做什么 / The idea |
 | :--- | :--- |
@@ -41,13 +61,13 @@ const xliang = {
 | **[MiniMatch](https://minimatch.space)** | Mac mini 租赁信息站，让设备与需求更容易遇见。<br /><sub>A place to discover Mac mini rental listings.</sub> |
 | **[ekf_slam](https://github.com/xliang-L/ekf_slam)** | Python 实验仓库，记录定位、建图与路径规划方向的探索。<br /><sub>Localization, mapping & route-planning experiments.</sub> |
 
-### `03` &nbsp; tools on the bench
+### `04` &nbsp; tools on the bench
 
 **Build** &nbsp; `TypeScript` · `JavaScript` · `Python` · `React` · `Node.js`<br />
 **Explore** &nbsp; `AI agents` · `Workflow automation` · `Creative coding`<br />
 **Run** &nbsp; `Git` · `Linux` · `macOS` · `SQLite`
 
-### `04` &nbsp; operating principles
+### `05` &nbsp; operating principles
 
 - **让好奇心驱动开工，让真实问题决定方向。** — Curiosity starts it. Usefulness steers it.
 - **把机械重复留给脚本，把判断和想象力留给人。** — Automate the routine. Keep the human spark.
