@@ -21,10 +21,10 @@
 
 <p align="center">
   <a href="https://github.com/xliang-L?tab=overview">
-    <img src="./assets/github-stats.svg" alt="xliang's public GitHub statistics" height="165" />
+    <img src="./assets/github-stats.svg" alt="xliang's public GitHub statistics" width="49%" />
   </a>
   <a href="https://github.com/xliang-L?tab=repositories">
-    <img src="./assets/top-languages.svg" alt="Language distribution across xliang's public repositories" height="165" />
+    <img src="./assets/top-languages.svg" alt="Language distribution across xliang's public repositories" width="49%" />
   </a>
 </p>
 
