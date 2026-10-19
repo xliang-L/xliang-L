@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="460" viewBox="0 0 1280 460" role="img" aria-labelledby="title description">
+  <title id="title">xliang / personal lab</title>
+  <desc id="description">Build. Ship. Repeat. A dark terminal with lime and cyan accents, a blinking cursor, and a circuit connecting ideas to useful products.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0b1415" />
+      <stop offset="1" stop-color="#101a21" />
+    </linearGradient>
+    <radialGradient id="aura" cx="1" cy="0" r="1">
+      <stop stop-color="#80eaa0" stop-opacity=".12" />
+      <stop offset="1" stop-color="#80eaa0" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#aac8c0" stroke-opacity=".055" />
+    </pattern>
+    <linearGradient id="signal" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#b8f76b" />
+      <stop offset="1" stop-color="#79e4e8" />
+    </linearGradient>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .display { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; font-weight: 800; }
+      .cursor { animation: blink 1.2s steps(1,end) infinite; }
+      .pulse { animation: breathe 4s ease-in-out infinite; }
+      @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+      @keyframes breathe { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .cursor,.pulse { animation: none; } }
+    </style>
+  </defs>
+
+  <rect x="1" y="1" width="1278" height="458" rx="20" fill="url(#surface)" stroke="#30433e" />
+  <rect x="2" y="2" width="1276" height="456" rx="19" fill="url(#grid)" />
+  <rect x="2" y="2" width="1276" height="456" rx="19" fill="url(#aura)" />
+
+  <g class="mono" font-size="13" letter-spacing="2">
+    <path d="M42 57V40H59M1221 40H1238V57" stroke="#b8f76b" fill="none" stroke-width="2" />
+    <text x="62" y="58" fill="#b8f76b">XLIANG / PERSONAL LAB</text>
+    <circle cx="1087" cy="52" r="4" fill="#b8f76b" class="pulse" />
+    <text x="1102" y="57" fill="#a0b4ae" font-size="11" letter-spacing="1">STAY CURIOUS</text>
+  </g>
+
+  <g class="display" font-size="92" letter-spacing="-4">
+    <text x="56" y="172" fill="#f0f4ec">BUILD.</text>
+    <text x="56" y="268" fill="#b8f76b">SHIP.</text>
+    <text x="56" y="364" fill="#f0f4ec">REPEAT.</text>
+  </g>
+  <rect x="451" y="296" width="7" height="68" fill="#b8f76b" class="cursor" />
+  <text x="62" y="411" class="mono" fill="#91aaa1" font-size="13" letter-spacing="1.2">IDEAS INTO CODE. CODE INTO SOMETHING USEFUL.</text>
+
+  <g>
+    <rect x="613" y="94" width="609" height="270" rx="12" fill="#080f12" stroke="#345046" />
+    <path d="M625 94H1210Q1222 94 1222 106V132H613V106Q613 94 625 94" fill="#14211f" />
+    <line x1="613" y1="132" x2="1222" y2="132" stroke="#2a3c35" />
+    <circle cx="636" cy="113" r="4.5" fill="#b8f76b" />
+    <circle cx="653" cy="113" r="4.5" fill="#79e4e8" />
+    <circle cx="670" cy="113" r="4.5" fill="#52675e" />
+    <text x="1197" y="117" class="mono" text-anchor="end" font-size="11" fill="#91aaa1">xliang@lab: ~</text>
+
+    <g class="mono" font-size="17">
+      <text x="640" y="169" fill="#b8f76b">~ $ <tspan fill="#e3ece4">whoami</tspan></text>
+      <text x="640" y="197" fill="#a4b8af">xliang / AI product builder</text>
+      <text x="640" y="237" fill="#b8f76b">~ $ <tspan fill="#e3ece4">cat focus.txt</tspan></text>
+      <text x="640" y="265" fill="#79e4e8">agents · automation · creative coding</text>
+      <text x="640" y="305" fill="#b8f76b">~ $ <tspan fill="#e3ece4">./ship --with-curiosity</tspan></text>
+      <text x="640" y="333" fill="#a4b8af">idea → prototype → something useful</text>
+      <rect x="999" y="319" width="9" height="18" fill="#b8f76b" class="cursor" />
+    </g>
+  </g>
+
+  <g class="mono" font-size="11" letter-spacing="1">
+    <path d="M635 402H780L794 388H920L934 402H1197" fill="none" stroke="#2b4841" stroke-width="2" />
+    <path d="M635 402H750M943 402H1197" fill="none" stroke="url(#signal)" stroke-width="2" />
+    <circle cx="635" cy="402" r="4" fill="#b8f76b" />
+    <circle cx="1197" cy="402" r="4" fill="#79e4e8" class="pulse" />
+    <rect x="803" y="378" width="107" height="21" rx="4" fill="#14221d" stroke="#345046" />
+    <text x="856" y="392" text-anchor="middle" fill="#b8f76b">HUMAN + AI</text>
+    <text x="635" y="430" fill="#79968a">CURIOSITY IN</text>
+    <text x="1197" y="430" text-anchor="end" fill="#79968a">USEFUL THINGS OUT</text>
+  </g>
+</svg>
