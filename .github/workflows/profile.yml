@@ -1,0 +1,101 @@
+name: Refresh profile graphics
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/profile.yml"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-graphics
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Generate contribution snake
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ github.token }}
+          outputs: |
+            assets/github-snake.svg?palette=github-dark&color_snake=%23b8f76b&color_dots=%2318221f,%232c4832,%2352703d,%238bb756,%23b8f76b
+
+      - name: Generate GitHub stats
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
+        with:
+          card: stats
+          path: assets/github-stats.svg
+          core_version: "2.2.0"
+          fail_on_error: "true"
+          token: ${{ github.token }}
+          options: username=${{ github.repository_owner }}&show_icons=true&hide_rank=true&custom_title=GitHub%20Telemetry&bg_color=0b1415&title_color=b8f76b&text_color=c5d4ca&icon_color=79e4e8&border_color=345046&border_radius=14&card_width=495
+
+      - name: Generate language card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2
+        with:
+          card: top-langs
+          path: assets/top-languages.svg
+          core_version: "2.2.0"
+          fail_on_error: "true"
+          token: ${{ github.token }}
+          options: username=${{ github.repository_owner }}&layout=compact&langs_count=6&card_width=420&custom_title=Code%20Footprint&bg_color=0b1415&title_color=b8f76b&text_color=c5d4ca&border_color=345046&border_radius=14
+
+      - name: Frame snake and validate graphics
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          ns = "http://www.w3.org/2000/svg"
+          ET.register_namespace("", ns)
+          snake_path = Path("assets/github-snake.svg")
+          snake = ET.parse(snake_path).getroot()
+          width, height = float(snake.get("width")), float(snake.get("height"))
+          panel = ET.Element(f"{{{ns}}}svg", {
+              "width": str(width + 48), "height": str(height + 90),
+              "viewBox": f"0 0 {width + 48} {height + 90}",
+              "role": "img", "aria-label": "Contribution Arcade: past year of GitHub contributions",
+          })
+          ET.SubElement(panel, f"{{{ns}}}rect", {
+              "x": "1", "y": "1", "width": str(width + 46), "height": str(height + 88),
+              "rx": "14", "fill": "#0b1415", "stroke": "#345046",
+          })
+          ET.SubElement(panel, f"{{{ns}}}text", {
+              "x": "24", "y": "31", "fill": "#b8f76b", "font-size": "13",
+              "font-family": "ui-monospace,Menlo,monospace", "letter-spacing": "2",
+          }).text = "CONTRIBUTION ARCADE / LAST 12 MONTHS"
+          snake.set("x", "24")
+          snake.set("y", "46")
+          panel.append(snake)
+          ET.ElementTree(panel).write(snake_path, encoding="unicode")
+
+          for filename in ["github-snake.svg", "github-stats.svg", "top-languages.svg"]:
+              path = Path("assets") / filename
+              root = ET.parse(path).getroot()
+              assert root.tag == f"{{{ns}}}svg", f"Invalid SVG: {filename}"
+              assert "Something went wrong" not in path.read_text(), f"Error card: {filename}"
+              print(f"Validated {filename} ({path.stat().st_size} bytes)")
+          PY
+
+      - name: Commit refreshed graphics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/github-snake.svg assets/github-stats.svg assets/top-languages.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh profile graphics"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
